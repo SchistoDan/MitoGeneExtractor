@@ -3,16 +3,7 @@
 MitoGeneExtractor can be used to conveniently extract mitochondrial protein-coding genes from next-generation sequencing libraries.
 Mitochondrial reads are often found as byproduct in sequencing libraries obtained from whole-genome sequencing, RNA-sequencing or various kinds of reduced representation libraries (e.g. hybrid enrichment libraries).
 
-## Most recent version:
-The most recent version is MitoGeneExtractor v1.9.6beta4. In this version we fixed several problems, some of which can lead to program crashes or give erronious results. 
-It is not recommended to use the version v1.9.5, v1.9.6beta2 or v1.9.6beta3 any more. Bugs have been introduced by last minute changes in the revision process of the paper, so the analyses in the paper are not affected.
-
-Currently, no release has been created for version v1.9.6, since I am still testing this version. It can be installed by downloading and compiling the code in the refactor-bugfix-v1.9.6  branch.
-
-## List of use recommended use cases:
-The most recent version is MitoGeneExtractor v1.9.6beta3. In this version we fixed several problems, some of which can lead to program crashes. It is not recommended to use the version v1.9.5 any more. Bugs have been introduced by last minute changes in the revision process of the paper, so the analyses in the paper are not affected.
-
-Currently, no release has been created for version v1.9.6. It can be installed by downloading and compiling the code in the refactor-bugfix-v1.9.6 branch.
+The most recent version is MitoGeneExtractor v1.9.6. In this version we fixed several problems, some of which can lead to program crashes. It is not recommended to use the version v1.9.5, v1.9.6beta2 or v1.9.6beta3 any more. Bugs have been introduced by last minute changes in the revision process of the paper, so the analyses in the paper are not affected.
 
 ## List of recommended use cases:
 - Extract mitochondrial protein-coding genes across a broad taxonomic range from sequencing libraries.

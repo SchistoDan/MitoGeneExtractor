@@ -34,8 +34,8 @@ inline short load_fastq_save_in_CSequences(CFile &infile, const char *filename, 
     else
     {
       pseqs->add_seq_to_dataset(SeqType_dna, tmp->get_identifier(), tmp->get_seq(), 'N');
-      delete tmp;
     }
+    delete tmp;
   }
   return 0;
 }
