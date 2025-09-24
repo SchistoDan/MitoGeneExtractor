@@ -17,7 +17,7 @@ HEADER = CDnaString3.h CSequence_Mol3.1.h CSequences3.1.h CSplit2.h Ctriple.h \
 all:    MitoGeneExtractor-v1.9.6
 
 
-MitoGeneExtractor-v1.9.6beta4: $(SRC) $(HEADER)
+MitoGeneExtractor-v1.9.6: $(SRC) $(HEADER)
 	g++ $(CFLAGS) $(INCL) $(SRC) -o MitoGeneExtractor-v1.9.6
 
 clean:
