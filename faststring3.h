@@ -122,7 +122,7 @@ class CharLookup
   }
 };
 
-
+/*
 inline char char_toupper(char c)
 {
   return toupper_lookup[(unsigned char)c];
@@ -132,6 +132,18 @@ inline char char_lower(char c)
 {
   return tolower_lookup[(unsigned char)c];
 }
+*/
+
+inline char toupper_char(char c)
+{
+  return toupper_lookup[(unsigned char)c];
+}
+
+inline char tolower_char(char c)
+{
+  return tolower_lookup[(unsigned char)c];
+}
+
 
 #define macromin(x,y) ((x)<(y) ? (x) : (y))
 //#define macromax(x,y) ((x)>(y) ? (x) : (y))
@@ -153,16 +165,6 @@ split_respect (Container &l, const faststring &s, char const * const ws = "\r\n\
 template <typename Container>
 typename Container::size_type
 split_strict (Container &l, const faststring &s, char const * const ws = " \t\n");
-
-inline char toupper_char(char c)
-{
-  return toupper_lookup[(int)c];
-}
-
-inline char tolower_char(char c)
-{
-  return tolower_lookup[(int)c];
-}
 
 namespace {
   inline bool is_in_symbol_list__(char c, const char* wstr="\r\n\t\v\f ")
@@ -907,6 +909,7 @@ public:
     if (_capacity >= s)
       return;
     
+    // This silences an malloc warning, that too much memory might be requested.
     if (s > 1000000000000)
     {
       std::cerr << "Requested string size exceeds 1TB limit.\n";
@@ -3570,6 +3573,9 @@ inline std::ostream &operator<<(std::ostream &out, const faststring  &str)
   return out;
 }
 
+/* This old version caused a warning in append:
+ warning: 'void* memcpy(void*, const void*, size_t)' specified size 18446744073709551611 exceeds maximum object size 9223372036854775807 [-Wstringop-overflow=]
+ memcpy(_buf+old_len, s._buf, s_len);
 inline faststring operator+(const faststring &a, const faststring &b)
 {
   faststring res;
@@ -3579,6 +3585,16 @@ inline faststring operator+(const faststring &a, const faststring &b)
   //  a += b;
   return res;
 }
+ */
+
+inline faststring operator+(const faststring &a, const faststring &b)
+{
+  faststring res(a);           // copy-construct from a
+  res.reserve(a.size() + b.size());  // pre-allocate final size
+  res.append(b);               // append only b
+  return res;
+}
+
 
 inline std::istream &getline(std::istream &is, faststring &str)
 {
@@ -3895,8 +3911,8 @@ inline bool less_than_faststring_case_insensitive(const faststring &a, const fas
 
   for (size_t i = 0; i < len; ++i)
   {
-    char c1 = char_toupper(a[i]);
-    char c2 = char_toupper(b[i]);
+    char c1 = toupper_char(a[i]);
+    char c2 = toupper_char(b[i]);
     if (c1 != c2)
       return c1 < c2;
   }
