@@ -13,7 +13,7 @@ source:
   # (Could not be computed in the build sandbox because outbound access to the
   #  upstream repository is blocked. `bioconda-utils` / the Bioconda bot can
   #  also fill this in automatically.)
-  sha256: 0000000000000000000000000000000000000000000000000000000000000000
+  sha256: b0941436c68f049afad7b0a6f8857ce0dc128d22dca886910261b2e41d116569
 
 build:
   number: 0
