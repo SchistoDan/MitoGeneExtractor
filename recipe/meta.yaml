@@ -29,7 +29,10 @@ test:
   commands:
     - MitoGeneExtractor --help
     - MitoGeneExtractor-v{{ version }} --help
-    - exonerate --version
+    # Just confirm the exonerate run-dependency is on PATH. `exonerate
+    # --version` prints the version but exits non-zero, which would fail the
+    # test under `set -e`.
+    - command -v exonerate
 
 about:
   home: https://github.com/cmayer/MitoGeneExtractor
