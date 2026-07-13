@@ -7,12 +7,6 @@ package:
 
 source:
   url: https://github.com/cmayer/MitoGeneExtractor/archive/refs/tags/v{{ version }}.tar.gz
-  # TODO: replace with the real checksum of the release tarball before submitting.
-  #   wget -O v{{ version }}.tar.gz {{ url }}
-  #   sha256sum v{{ version }}.tar.gz
-  # (Could not be computed in the build sandbox because outbound access to the
-  #  upstream repository is blocked. `bioconda-utils` / the Bioconda bot can
-  #  also fill this in automatically.)
   sha256: b0941436c68f049afad7b0a6f8857ce0dc128d22dca886910261b2e41d116569
 
 build:
@@ -26,6 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - make
   # No host libraries: TCLAP is header-only and vendored in the source tree.
   run:
